@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function getEnvironment () {
     const env = process.env.NODE_ENV;
@@ -38,6 +39,11 @@ module.exports = {
             template: './src/index.html',
             inject: 'head',
             scriptLoading: 'defer'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/global.css', to: './style.css' }
+            ]
         })
     ]
 };

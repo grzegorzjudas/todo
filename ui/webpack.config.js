@@ -8,10 +8,24 @@ function getEnvironment () {
 }
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'index.js'
     },
-    mode: getEnvironment()
+    mode: getEnvironment(),
+    resolve: {
+        extensions: [ '.js', '.ts', '.tsx' ]
+    },
+    module: {
+        rules: [
+            {
+                test: /(.ts|tsx|js)$/,
+                exclude: [ /node_modules/ ],
+                use: [
+                    { loader: 'ts-loader' }
+                ]
+            }
+        ]
+    }
 };

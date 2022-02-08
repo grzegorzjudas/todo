@@ -1,5 +1,7 @@
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 function getEnvironment () {
     const env = process.env.NODE_ENV;
     const options = [ 'development', 'production', 'none' ];
@@ -8,7 +10,7 @@ function getEnvironment () {
 }
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'index.js'
@@ -27,5 +29,12 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            inject: 'head',
+            scriptLoading: 'defer'
+        })
+    ]
 };

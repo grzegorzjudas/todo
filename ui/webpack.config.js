@@ -1,4 +1,5 @@
 const path = require('path');
+const { readdirSync } = require('fs');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -10,6 +11,20 @@ function getEnvironment () {
     return options.includes(env) ? env : 'development';
 }
 
+function createAliases () {
+    const dir = path.resolve(__dirname, './src');
+    const files = readdirSync(dir, { withFileTypes: true });
+    const folders = files
+        .filter((file) => file.isDirectory())
+        .map((folder) => folder.name);
+
+    return folders.reduce((all, folder) => {
+        all[folder] = path.resolve(__dirname, `./src/${folder}`);
+
+        return all;
+    }, {});
+}
+
 module.exports = {
     entry: './src/index.tsx',
     output: {
@@ -18,7 +33,10 @@ module.exports = {
     },
     mode: getEnvironment(),
     resolve: {
-        extensions: [ '.js', '.ts', '.tsx' ]
+        extensions: [ '.js', '.ts', '.tsx' ],
+        alias: {
+            ...createAliases()
+        }
     },
     devServer: {
         port: 8080

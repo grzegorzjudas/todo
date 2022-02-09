@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "rootDir": "src",
+        "baseUrl": "src",
         "outDir": "dist",
         "module": "ESNext",
         "moduleResolution": "node",
@@ -12,10 +11,5 @@
             "ESNext",
             "DOM"
         ]
-    },
-    "exclude": [
-        "node_modules",
-        "dist",
-        "webpack.config.js"
-    ]
+    }
 }

@@ -1,5 +1,4 @@
 import joi from 'joi';
-import { validateRequestPayload } from 'lib/http';
 
 import { APIRoute } from '../types/API';
 import { HTTPMethod } from '../types/HTTP';

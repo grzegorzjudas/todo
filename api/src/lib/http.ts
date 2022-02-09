@@ -3,14 +3,18 @@ import { Response } from 'express';
 
 import { HTTPCode } from '../types/HTTP';
 
+import Config from '../lib/config';
 import APIError from './error';
 
 export function respondSuccess (res: Response, data: any, code = HTTPCode.OK) {
-    const response = { status: 'ok', data };
-
     res.setHeader('Content-Type', 'application/json');
 
-    return res.status(code).send(JSON.stringify(response, null, 4));
+    const response = { status: 'ok', data };
+    const parsed = Config.NODE_ENV === 'development' ?
+        JSON.stringify(response, null, 4) :
+        JSON.stringify(response);
+
+    return res.status(code).send(parsed);
 }
 
 export function closeWithError (res: Response, error: APIError) {

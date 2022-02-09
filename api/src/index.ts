@@ -1,5 +1,6 @@
 import express from 'express';
 
+import Config from './lib/config';
 import { createErrorFromNative } from './lib/error';
 import { respondSuccess, closeWithError, validateRequestPayload } from './lib/http';
 import routes from './routes';
@@ -24,8 +25,8 @@ for (let route of routes) {
     });
 }
 
-const instance = app.listen(8081, () => {
-    console.log('Server listening on port 8081');
+const instance = app.listen(Config.PORT, () => {
+    console.log(`Server listening on port ${Config.PORT}`);
 }).on('error', (error) => {
     console.error(error);
 });

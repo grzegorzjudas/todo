@@ -1,5 +1,6 @@
 import express from 'express';
 
+import { createErrorFromNative } from './lib/error';
 import { respondSuccess, closeWithError } from './lib/http';
 import routes from './routes';
 
@@ -12,7 +13,7 @@ for (let route of routes) {
 
             return respondSuccess(res, response);
         } catch (error) {
-            return closeWithError(res, new Error(error.message || error));
+            return closeWithError(res, createErrorFromNative(error));
         }
     });
 }

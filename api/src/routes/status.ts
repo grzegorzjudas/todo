@@ -1,7 +1,5 @@
 import { APIRoute } from '../types/API';
-import { HTTPCode, HTTPMethod } from '../types/HTTP';
-
-import APIError from '../lib/error';
+import { HTTPMethod } from '../types/HTTP';
 
 export default {
     method: HTTPMethod.GET,

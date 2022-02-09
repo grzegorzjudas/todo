@@ -1,0 +1,32 @@
+{
+    "name": "@skygate/todo-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc -p .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/grzegorzjudas/todo.git"
+    },
+    "keywords": [
+        "todo",
+        "app",
+        "skygate"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/grzegorzjudas/todo/issues"
+    },
+    "homepage": "https://github.com/grzegorzjudas/todo#readme",
+    "dependencies": {
+        "express": "^4.17.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "typescript": "^4.5.5"
+    }
+}

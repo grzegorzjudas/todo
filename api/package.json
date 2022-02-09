@@ -25,7 +25,8 @@
     },
     "homepage": "https://github.com/grzegorzjudas/todo#readme",
     "dependencies": {
-        "express": "^4.17.2"
+        "express": "^4.17.2",
+        "http-status-codes": "^2.2.0"
     },
     "devDependencies": {
         "@types/express": "^4.17.13",

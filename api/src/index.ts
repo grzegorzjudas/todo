@@ -1,10 +1,21 @@
 import express from 'express';
 
+import { respondSuccess, closeWithError } from './lib/http';
+import routes from './routes';
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('hello world!');
-});
+for (let route of routes) {
+    app[route.method.toLowerCase()](route.url, (req, res, next) => {
+        try {
+            const response = route.controller(req, res, next);
+
+            return respondSuccess(res, response);
+        } catch (error) {
+            return closeWithError(res, new Error(error.message || error));
+        }
+    });
+}
 
 const instance = app.listen(8081, () => {
     console.log('Server listening on port 8081');

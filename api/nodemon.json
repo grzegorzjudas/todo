@@ -1,4 +1,6 @@
 {
+    "ext": "js,ts",
+    "exec": "npm run build && npm start",
     "ignore": [
         "dist/"
     ],

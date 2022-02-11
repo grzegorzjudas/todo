@@ -7,3 +7,9 @@ export async function listTasks (): Promise<DBSchemaTask[]> {
 
     return tasks;
 }
+
+export async function createTask (title: string): Promise<DBSchemaTask> {
+    const [ task ] = await DB(DBTable.TASKS).insert({ title }).returning('*') as DBSchemaTask[];
+
+    return task;
+}

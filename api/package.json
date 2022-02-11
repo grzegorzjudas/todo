@@ -5,6 +5,8 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc -p .",
+        "db:migrate": "npm run build && knex migrate:latest -- --envfile env-local.env",
+        "db:rollback": "npm run build && knex migrate:rollback -- --envfile env-local.env",
         "dev": "nodemon",
         "start": "npm run build && node -r dotenv/config --enable-source-maps dist/index.js dotenv_config_path=env-local.env",
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,7 +29,10 @@
     "dependencies": {
         "express": "^4.17.2",
         "http-status-codes": "^2.2.0",
-        "joi": "^17.6.0"
+        "joi": "^17.6.0",
+        "knex": "^1.0.3",
+        "objection": "^3.0.1",
+        "pg": "^8.7.3"
     },
     "devDependencies": {
         "@types/express": "^4.17.13",

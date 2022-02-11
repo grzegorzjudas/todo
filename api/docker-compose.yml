@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+    db:
+        image: postgres:12-alpine
+        container_name: tasks-db
+        environment:
+            POSTGRES_USER: tasks
+            POSTGRES_PASSWORD: tasks
+            POSTGRES_DB: tasks
+        ports:
+            - "5432:5432"
+        volumes:
+            - db-data:/var/lib/postgresql/data
+volumes:
+    db-data:

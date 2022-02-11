@@ -1,7 +1,7 @@
 import status from './status';
-import test from './test';
+import tasks from './tasks';
 
 export default [
     status,
-    test
+    ...tasks
 ];

@@ -32,6 +32,12 @@ function getConfig (prop: string, type: 'string' | 'number' | 'boolean'): string
 }
 
 export default class Config {
-    public static NODE_ENV: string = getConfig('NODE_ENV', 'string');
-    public static PORT: number = getConfig('PORT', 'number');
+    public static NODE_ENV = getConfig('NODE_ENV', 'string');
+    public static PORT = getConfig('PORT', 'number');
+
+    public static DB_HOST = getConfig('DB_HOST', 'string');
+    public static DB_PORT = getConfig('DB_PORT', 'number');
+    public static DB_USER = getConfig('DB_USER', 'string');
+    public static DB_PASSWORD = getConfig('DB_PASSWORD', 'string');
+    public static DB_DATABASE = getConfig('DB_DATABASE', 'string');
 }

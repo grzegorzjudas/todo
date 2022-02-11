@@ -16,7 +16,7 @@ for (let route of routes) {
                 req.body = await validateRequestPayload(req.body, route.schema);
             }
 
-            const response = route.controller(req, res, next);
+            const response = await route.controller(req, res, next);
 
             return respondSuccess(res, response);
         } catch (error) {

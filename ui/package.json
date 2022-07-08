@@ -4,8 +4,9 @@
     "description": "",
     "main": "dist/index.js",
     "scripts": {
-        "build": "webpack",
+        "build": "webpack && npm run package",
         "dev": "webpack serve",
+        "package": "cd dist && tar --exclude='*.map' -zcf ../artifact.tar.gz . && cd ..",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

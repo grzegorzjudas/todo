@@ -4,10 +4,11 @@
     "description": "",
     "main": "dist/index.js",
     "scripts": {
-        "build": "tsc -p .",
+        "build": "tsc -p . && npm run package",
         "db:migrate": "npm run build && knex migrate:latest -- --envfile env-local.env",
         "db:rollback": "npm run build && knex migrate:rollback -- --envfile env-local.env",
         "dev": "nodemon",
+        "package": "cd dist && tar --exclude='*.map' -zcf ../artifact.tar.gz . && cd ..",
         "start": "npm run build && node -r dotenv/config --enable-source-maps dist/index.js dotenv_config_path=env-local.env",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
